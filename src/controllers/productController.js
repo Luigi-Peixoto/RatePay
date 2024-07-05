@@ -12,7 +12,7 @@ const getProducts = async (req, res) => {
 const getProduct = async (req, res) => {
   const {id} = req.params
   try {
-    const product = await Product.findOne({id:id});
+    const product = await Product.findById(id);
     res.json(product);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -20,21 +20,20 @@ const getProduct = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  const { name, description, link, image_url} = req.body;
-
+  const { name, description, link } = req.body;
+  const file = req.file;
   try {
-    const productByName = await Product.findOne({ name: name });
+    const productByName = await Product.findOne({ name });
     if (productByName) {
       return res.status(400).json({ message: 'Produto com esse nome já existe' });
     }
 
-    const productByLink = await Product.findOne({ link: link });
+    const productByLink = await Product.findOne({ link });
     if (productByLink) {
       return res.status(400).json({ message: 'Produto com esse link já existe' });
     }
 
-    const newProduct = new Product({ name, description, link, image_url });
-
+    const newProduct = new Product({ name, description, link, image_url: file.path });
     const savedProduct = await newProduct.save();
     res.status(201).json(savedProduct);
   } catch (error) {

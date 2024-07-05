@@ -27,6 +27,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/auth', userRoutes);
 app.use('/products', productRoutes);
 
+app.get('/', (req, res) => {
+    res.render('index');
+});
+
 app.listen(PORT, () => {
     console.log("App Running");
 });

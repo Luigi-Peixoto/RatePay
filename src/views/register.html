@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="../public/images/hp-images/logo_icon.png" type="image/png">
+    <link rel="stylesheet" href="../public/css/register.css">
+    
+    <title>Registro - HofficePay</title>
+</head>
+<body>   
+    <main id="container">
+        <form id="login_form">
+            <div id="form_header">
+                <a href="/">
+                    <img id="mode_icon" src="../public/images/hp-images/logo_icon.png"></img>
+                </a>
+                <h1>Registro</h1>
+            </div>
+
+            <div id="social_media">
+                <a href="#">
+                    <img src="https://logopng.com.br/logos/facebook-13.svg" alt="">
+                </a>
+
+                <a href="#">
+                    <img src="https://logopng.com.br/logos/google-37.png" alt="">
+                </a>
+                
+            </div>
+
+            <div id="inputs">
+                <div class="input-box">
+                    <label for="name">
+                        Login
+                        <div class="input-field">
+                            <i class="fa-regular fa-user"></i>
+                            <input type="text" id="name" name="name">
+                        </div>
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label for="username">
+                        Usuário
+                        <div class="input-field">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" id="username" name="username">
+                        </div>
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label for="email">
+                        Email
+                        <div class="input-field">
+                            <i class="fa-solid fa-envelope"></i>
+                            <input type="text" id="email" name="email">
+                        </div>
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label for="password">
+                        Senha
+                        <div class="input-field">
+                            <i class="fa-solid fa-key"></i>
+                            <input type="password" id="password" name="password">
+                        </div>
+                    </label>
+                </div>
+                <div class="input-box">
+                    <label for="confirmedPassword">
+                        Confirme a senha
+                        <div class="input-field">
+                            <i class="fa-solid fa-lock"></i>
+                            <input type="password" id="password" name="password">
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" id="login_button">
+                Registro
+            </button>
+            <h3>Já possui uma conta? <a id="register" href="/login">Entrar!</a></h2>
+        </form>
+    </main>
+</body>
+</html>

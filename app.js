@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname,'src', 'public')));
 
 app.use(session({
-    secret: 'keyboard cat',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: true }

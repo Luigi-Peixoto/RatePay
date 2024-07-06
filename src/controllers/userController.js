@@ -2,6 +2,7 @@ const User = require('../models/userModel');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
 
 const getUsers = async (req, res) => {
   try {
@@ -56,7 +57,21 @@ const login = async (req, res) => {
       return res.status(422).json({ message: 'Senha inválida!' });
     }
 
-    req.session.user = { username: user.username, role: user.role };
+    const payload = { 
+      id: user._id, 
+      username: user.username, 
+      role: user.role 
+    };
+
+    const accessToken = jwt.sign(payload, process.env.SECRET, { expiresIn: '1h' });
+
+    res.cookie('accessToken', accessToken, {
+      httpOnly: true,
+      secure: true,
+      sameSite: 'Strict',
+      maxAge: 15 * 60 * 1000
+    });
+
     return res.redirect('/');
 
   } catch (error) {
@@ -66,6 +81,11 @@ const login = async (req, res) => {
 };
 
 const logout = async (req, res) => {
+  res.clearCookie('accessToken', {
+    httpOnly: true,
+    secure: true,
+    sameSite: 'Strict'
+  });
   req.session.destroy();
   return res.redirect("/");
 };

@@ -11,20 +11,7 @@
     <script type="module" src="../public/js/index.js"></script>
 </head>
 <body>
-    <header>
-        <img src="../public/images/hp-images/logoWhite_long.png" alt="">
-        <nav>
-            <ul>
-                <li><a href="#beginning">Inicio</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="#products">Produtos</a></li>
-            </ul>
-        </nav>
-        <div>
-            <a href="/register">Cadastro</a>
-            <a href="/login">Entrar</a>
-        </div>
-    </header>
+    <%- include('header') %>
     
     <main>
         <section id="beginning">
@@ -54,30 +41,6 @@
         </section>
     </main>
 
-    <footer>
-        <img src="../public/images/hp-images/logoWhite_long.png" alt="">
-        <p>&copy; 2024, HofficePay. <br>Todos os direitos reservados.</p>
-        
-        <div class="contact-content"> 
-            <ul>
-                <li><a href="/">Contato</a></li>
-                <li><a href="/">Termos</a></li>
-            </ul>
-            <div id="social-contacts">
-                <a target=”_blank” href="https://www.instagram.com/hofficepay/" class="contact-link" id="instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                </a>
-    
-                <a target=”_blank” href="#" class="contact-link" id="youtube">
-                    <i class="fa-brands fa-youtube"></i>
-                </a>
-    
-                <a target=”_blank” href="https://www.instagram.com/hofficepay/" class="contact-link" id="linkedin">
-                    <i class="fa-brands fa-facebook"></i>
-                </a>
-    
-            </div>
-        </div>
-    </footer>
+    <%- include('footer') %>
 </body>
 </html>

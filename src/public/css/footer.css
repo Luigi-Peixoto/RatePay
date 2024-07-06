@@ -1,0 +1,97 @@
+footer {
+    background-color: var(--header-color);
+    color: var(--secondary-color);
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer img {
+    height: 70px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+footer p {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+footer .contact-content {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+footer .contact-content ul {
+    list-style: none;
+}
+
+footer .contact-content ul li {
+    margin: 5px 0;
+}
+
+footer .contact-content ul li a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer .contact-content  {
+    margin-top: 20px;
+}
+
+footer .contact-content a {
+    color: var(--secondary-color);
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-content > ul {
+    display: flex;
+}
+
+#social-contacts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.contact-link {
+    text-decoration: none;
+}
+
+#social-contacts .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    color: #f5f5f5;
+    border-radius: 50%;
+}
+
+#instagram {
+    background: linear-gradient(#7f37c9, #ff2992, #ff9807);
+}
+
+#youtube {
+    background-color: #e60000;
+}
+
+#linkedin {
+    background-color: #4267b3;
+}

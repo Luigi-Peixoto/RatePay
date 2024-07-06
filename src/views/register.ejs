@@ -10,7 +10,7 @@
     
     <title>Registro - HofficePay</title>
 </head>
-<body>   
+<body>
     <main id="container">
         <form id="login_form" action="/auth/register" method="POST" onsubmit="return validateForm()">
             <div id="form_header">
@@ -18,17 +18,6 @@
                     <img id="mode_icon" src="../public/images/hp-images/logo_icon.png"></img>
                 </a>
                 <h1>Registro</h1>
-            </div>
-
-            <div id="social_media">
-                <a href="#">
-                    <img src="https://logopng.com.br/logos/facebook-13.svg" alt="">
-                </a>
-
-                <a href="#">
-                    <img src="https://logopng.com.br/logos/google-37.png" alt="">
-                </a>
-                
             </div>
 
             <div id="inputs">
@@ -90,10 +79,19 @@
 <script>
     function validateForm() {
         const login = document.getElementById('login').value;
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
+        const confirmedPassword = document.getElementById('confirmedPassword').value;
+
     
-        if (login === "" || password === "") {
+        if (login === "" || username === "" || email === "" || password === "" || confirmedPassword === "") {
             alert("Por favor, preencha todos os campos.");
+            return false;
+        }
+
+        if(password != confirmedPassword){
+            alert("As senhas não coincidem. Por favor, verifique e tente novamente.");
             return false;
         }
     

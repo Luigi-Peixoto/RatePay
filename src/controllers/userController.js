@@ -2,7 +2,6 @@ const User = require('../models/userModel');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 
 const getUsers = async (req, res) => {
   try {
@@ -40,7 +39,6 @@ const login = async (req, res) => {
   const { login, password } = req.body;
 
   try {
-
     if (!login || !password) {
       return res.status(400).json({ message: 'Login e senha são obrigatórios!' });
     }
@@ -58,35 +56,9 @@ const login = async (req, res) => {
       return res.status(422).json({ message: 'Senha inválida!' });
     }
 
-    const secret = process.env.SECRET;
-    const refreshSecret = process.env.REFRESH_SECRET;
-
-    if (!secret || !refreshSecret) {
-      return res.status(500).json({ message: 'Erro de configuração interna.' });
-    }
-
-    const accessToken = jwt.sign({ id: user._id }, secret, { expiresIn: '15m' });
-    const refreshToken = jwt.sign({ id: user._id }, refreshSecret, { expiresIn: '7d' });
-
-    user.refreshToken = refreshToken;
-    await user.save();
-
-    res.cookie('accessToken', accessToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'Strict',
-      maxAge: 15 * 60 * 1000
-    });
-
-    res.cookie('refreshToken', refreshToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: 'Strict',
-      maxAge: 7 * 24 * 60 * 60 * 1000
-    });
-
+    req.session.user = { username: user.username, role: user.role };
     return res.redirect('/');
-    
+
   } catch (error) {
     console.error('Erro durante o login:', error);
     return res.status(500).json({ message: 'Erro interno do servidor. Por favor, tente novamente mais tarde.' });
@@ -94,22 +66,8 @@ const login = async (req, res) => {
 };
 
 const logout = async (req, res) => {
-  res.clearCookie('accessToken', {
-    httpOnly: true,
-    secure: true,
-    sameSite: 'Strict'
-  });
-
-  res.clearCookie('refreshToken', {
-    httpOnly: true,
-    secure: true,
-    sameSite: 'Strict'
-  });
-
-
-  await User.findByIdAndUpdate(req.user.id, { refreshToken: null });
-
-  return res.status(200).json({ message: 'Logout bem-sucedido!' });
+  req.session.destroy();
+  return res.redirect("/");
 };
 
 

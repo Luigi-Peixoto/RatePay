@@ -85,7 +85,8 @@ const login = async (req, res) => {
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
-    return res.status(200).json({ message: 'Login bem-sucedido!' });
+    return res.redirect('/');
+    
   } catch (error) {
     console.error('Erro durante o login:', error);
     return res.status(500).json({ message: 'Erro interno do servidor. Por favor, tente novamente mais tarde.' });

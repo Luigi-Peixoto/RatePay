@@ -11,7 +11,7 @@
     --color-purple-100: #2161b5;
     --color-purple-200: #78add1;
 
-    --color-gradient: linear-gradient(90deg,#4D42F8, #6262f6, var(--color-purple-200));
+    --color-gradient: linear-gradient(90deg, #4D42F8, #6262f6, var(--color-purple-200));
 }
 
 * {
@@ -21,19 +21,25 @@
     box-sizing: border-box;
 }
 
-#container {
-    height: 100vh;
+html, body {
+    height: 100%;
     width: 100%;
+}
+
+#container {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background: var(--color-gradient);
+    padding: 20px;
 }
 
 #login_form {
     display: flex;
     flex-direction: column;
-    height: fit-content;
+    width: 100%;
+    max-width: 400px;
     background-color: var(--color-light-50);
     padding: 30px 40px;
     border-radius: 8px;
@@ -41,23 +47,38 @@
     box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.336);
 }
 
+.placeholder::-webkit-input-placeholder {
+    font-size: 15px;
+}
+
 #form_header {
     position: relative;
-    height: 30%;
-    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+}
+
+#form_header h1::before {
+    position: absolute;
+    content: '';
+    width: 15%;
+    height: 3px;
+    background-color: var(--color-purple-50);
+    bottom: 10px;
+    border-radius: 5px;
 }
 
 #form_header h1 {
     font-size: 40px;
-    position: relative;
 }
 
 #mode_icon {
-    position: absolute;
-    height: 100%;
-    left: 0%;
+    margin:10px;
+    margin-bottom: 0px;
+    height: 40px;
     object-fit: contain;
 }
 
@@ -100,14 +121,14 @@
     font-size: 18px;
     cursor: text;
     color: var(--color-dark-900);
-} 
+}
 
 .input-field input {
     border: none;
-    width: 260px;
+    width: 100%;
     background-color: transparent;
     font-size: 18px;
-    padding: 0px 5px;
+    padding: 0 5px;
 }
 
 .input-field input:focus {
@@ -117,7 +138,7 @@
 #login_button {
     border: none;
     background: var(--color-gradient);
-    padding: 7px;
+    padding: 10px;
     border-radius: 3px;
     color: var(--color-light-50);
     font-weight: bold;
@@ -131,12 +152,14 @@
 
 h3 {
     font-weight: 300;
+    text-align: center;
 }
+
 #register {
     position: relative;
     font-weight: bold;
     color: black;
-    text-decoration: none;  
+    text-decoration: none;
 }
 
 #register:before {
@@ -148,14 +171,11 @@ h3 {
     left: 0;
     background: var(--color-gradient);
     visibility: hidden;
-    -webkit-transform: scaleX(0);
     transform: scaleX(0);
-    -webkit-transition: all 0.3s ease-in-out 0s;
-    transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out;
 }
 
 #register:hover:before {
     visibility: visible;
-    -webkit-transform: scaleX(1);
     transform: scaleX(1);
 }

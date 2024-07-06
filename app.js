@@ -2,9 +2,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken')
 const connectDB = require('./src/config/db');
 const userRoutes = require('./src/routes/userRoutes');
 const productRoutes = require('./src/routes/productRoutes');
@@ -23,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname,'src', 'public')));
 app.use('/auth', userRoutes);
 app.use('/products', productRoutes);
 

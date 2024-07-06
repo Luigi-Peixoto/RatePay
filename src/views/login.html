@@ -12,7 +12,7 @@
 </head>
 <body>   
     <main id="container">
-        <form id="login_form">
+        <form id="login_form" action="/auth/login" method="POST" onsubmit="return validateForm()">
             <div id="form_header">
                 <a href="/">
                     <img id="mode_icon" src="../public/images/hp-images/logo_icon.png"></img>
@@ -33,11 +33,11 @@
 
             <div id="inputs">
                 <div class="input-box">
-                    <label for="name">
+                    <label for="login">
                         Login
                         <div class="input-field">
                             <i class="fa-solid fa-user"></i>
-                            <input type="text" id="name" name="login" placeholder="Usuário ou Email">
+                            <input class="placeholder" type="text" id="login" name="login" placeholder="Digite seu usuário ou e-mail">
                         </div>
                     </label>
                 </div>
@@ -47,7 +47,7 @@
                         Senha
                         <div class="input-field">
                             <i class="fa-solid fa-key"></i>
-                            <input type="password" id="password" name="password" placeholder="Senha">
+                            <input class="placeholder" type="password" id="password" name="password" placeholder="Digite sua senha">
                         </div>
                     </label>
                     
@@ -67,3 +67,16 @@
     </main>
 </body>
 </html>
+<script>
+    function validateForm() {
+        const login = document.getElementById('login').value;
+        const password = document.getElementById('password').value;
+    
+        if (login === "" || password === "") {
+            alert("Por favor, preencha todos os campos.");
+            return false;
+        }
+    
+        return true;
+    }
+</script>

@@ -4,33 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HofficePay</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="../public/images/hp-images/logo_icon.png" type="image/png">
     <link rel="stylesheet" href="../public/css/styles.css">
+    <script type="module" src="../public/js/index.js"></script>
 </head>
 <body>
     <header>
+        <img src="../public/images/hp-images/logoWhite_long.png" alt="">
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="#beginning">Inicio</a></li>
+                <li><a href="#about">Sobre</a></li>
+                <li><a href="#products">Produtos</a></li>
             </ul>
         </nav>
+        <div>
+            <a href="/register">Cadastro</a>
+            <a href="/login">Entrar</a>
+        </div>
     </header>
     
     <main>
-        <section class="hero">
-            <h1>Bem-vindo ao HofficeCon & HofficePay</h1>
+        <section id="beginning">
+            <h1>Bem-vindo ao HofficePay</h1>
             <p>Conectando grandes marcas a influenciadores e oferecendo a melhor solução para seus Infoprodutos e E-Commerce.</p>
         </section>
         
-        <section class="products">
+        <section id="about">
+
+        </section>
+
+        <section id="products">
             <h2>Produtos</h2>
-            <div class="product-grid">
+            <div id="product-container">
                 <div class="product-item">
-                    <a href="produto-detalhado.html">
-                        <img src="img/product1.jpg" alt="Produto 1">
-                        <h3>Produto 1</h3>
-                    </a>
+                    <img src="img/product1.jpg" alt="Produto 1">
+                    <h3>Produto 1</h3>
                 </div>
                 <div class="product-item">
                     <a href="produto-detalhado.html">
@@ -44,7 +55,29 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 HofficeCon & HofficePay. Todos os direitos reservados.</p>
+        <img src="../public/images/hp-images/logoWhite_long.png" alt="">
+        <p>&copy; 2024, HofficePay. <br>Todos os direitos reservados.</p>
+        
+        <div class="contact-content"> 
+            <ul>
+                <li><a href="/">Contato</a></li>
+                <li><a href="/">Termos</a></li>
+            </ul>
+            <div id="social-contacts">
+                <a target=”_blank” href="https://www.instagram.com/hofficepay/" class="contact-link" id="instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+    
+                <a target=”_blank” href="#" class="contact-link" id="youtube">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+    
+                <a target=”_blank” href="https://www.instagram.com/hofficepay/" class="contact-link" id="linkedin">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+    
+            </div>
+        </div>
     </footer>
 </body>
 </html>

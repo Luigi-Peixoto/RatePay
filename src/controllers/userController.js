@@ -1,6 +1,4 @@
 const User = require('../models/userModel');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
 
@@ -64,15 +62,19 @@ const login = async (req, res) => {
     };
 
     const accessToken = jwt.sign(payload, process.env.SECRET, { expiresIn: '1h' });
+    req.user = payload;
+    
+    console.log(req.user);
 
     res.cookie('accessToken', accessToken, {
       httpOnly: true,
       secure: true,
       sameSite: 'Strict',
-      maxAge: 15 * 60 * 1000
+      maxAge: 1 * 60 * 60 * 1000
     });
 
-    return res.redirect('/');
+    //return res.render('index', { user: payload });
+    return res.status(200).json({ message: 'Login bem-sucedido!', accessToken });
 
   } catch (error) {
     console.error('Erro durante o login:', error);
@@ -86,11 +88,8 @@ const logout = async (req, res) => {
     secure: true,
     sameSite: 'Strict'
   });
-  req.session.destroy();
   return res.redirect("/");
 };
-
-
 
 module.exports = {
   getUsers,

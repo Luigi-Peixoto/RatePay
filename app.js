@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./src/config/db');
 const userRoutes = require('./src/routes/userRoutes');
@@ -25,12 +24,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(path.join(__dirname,'src', 'public')));
 
-app.use(session({
-    secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
-}))
 app.use(cookieParser());
 app.use('/auth', userRoutes);
 app.use('/products', productRoutes);

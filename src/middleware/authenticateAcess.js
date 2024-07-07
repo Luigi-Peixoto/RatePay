@@ -10,6 +10,7 @@ const authenticateToken = (req, res, next) => {
     const secret = process.env.SECRET;
     const decoded = jwt.verify(token, secret);
     req.user = decoded;
+    console.log(req.user.id)
     next();
   } catch (error) {
     return res.status(403).json({ message: 'Token inválido!' });
@@ -17,17 +18,10 @@ const authenticateToken = (req, res, next) => {
 };
 
 const authAdmin = (req, res, next) => {
-    const user = req.session.user || null;
-  
-    if (!user) {
-      return res.redirect("/auth/login");
-    }
-
-    if (user.session.user.role != "ADMIN") {
-        return res.status(401).json({ message: 'Acesso negado!' });
-    }
-    
-    next();
+  if (!req.user || req.user.role !== 'ADMIN') {
+    return res.status(401).json({ message: 'Acesso negado!' });
+  }
+  next();
 };
 
 module.exports = {

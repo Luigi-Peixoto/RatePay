@@ -60,7 +60,7 @@ function createPage (data) {
     titleP.textContent = "Link de Afiliado:";
     bottomContent.appendChild(titleP);
 
-    const p = document.createElement("p");
+    const p = document.createElement("button");
     p.id = "product-link";
     p.textContent = "Clique aqui para copiar o link";
     bottomContent.appendChild(p);

@@ -1,6 +1,13 @@
+import SECRET from "./env.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("product-container");
-    fetch("/products/api")
+    fetch("/products/api",{
+        method: 'GET',
+        headers: {
+            'x-check-header' : SECRET
+        }
+    })
     .then(response => response.json())
       .then(data => {
         data.forEach(product => {
@@ -9,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
       })
       .catch(error => {
-          console.log(error)
+        console.log(error)
       });
 });
 
@@ -39,4 +46,3 @@ function createCard(id, name, image_url) {
 
     return card;
 }
-

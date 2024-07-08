@@ -1,30 +1,38 @@
-const session = require('express-session');
-const jwt = require('jsonwebtoken')
-
-const authenticateToken = (req, res, next) => {
-  const token = req.cookies.accessToken;
-  if (!token) {
-    return res.status(401).json({ message: 'Acesso negado!' });
+function isAuthenticated(req, res, next) {
+  if (req.session.user) {
+    return next();
+  } else {
+    return res.send('<script>alert("Você precisa estar logado"); window.location.href = "/login"; </script>');
   }
-  try {
-    const secret = process.env.SECRET;
-    const decoded = jwt.verify(token, secret);
-    req.user = decoded;
-    console.log(req.user.id)
-    next();
-  } catch (error) {
-    return res.status(403).json({ message: 'Token inválido!' });
-  }
-};
+}
 
-const authAdmin = (req, res, next) => {
-  if (!req.user || req.user.role !== 'ADMIN') {
-    return res.status(401).json({ message: 'Acesso negado!' });
+const isEmployee = (req, res, next) => {
+  if (!req.session.user || (req.session.user.role !== 'EMPLOYEE' && req.session.user.role !== 'ADMIN')) {
+    return res.send('<script>alert("ACESSO NEGADO"); window.location.href = "/"; </script>');
+  }
+  next();
+}
+
+const isAdmin = (req, res, next) => {
+  if (!req.session.user || req.session.user.role !== 'ADMIN') {
+    return res.send('<script>alert("ACESSO NEGADO"); window.location.href = "/"; </script>');
   }
   next();
 };
 
+const allowed = (req, res, next) => {
+  const customHeader = req.headers['x-check-header'];
+  if(customHeader === process.env.SECRETHEADER){
+    return next();
+  }else if (!req.session.user || (req.session.user.role !== 'EMPLOYEE' && req.session.user.role !== 'ADMIN')) {
+    return res.status(400).json({message: 'não bateu o cargo'})
+  }
+  return next();
+};
+
 module.exports = {
-  authenticateToken,
-  authAdmin
+  isAuthenticated,
+  isEmployee,
+  isAdmin,
+  allowed
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -34,37 +36,67 @@ body {
 
 main {
     min-height: 50rem;
-    padding: 50px 20px;
+    padding: 0px;
 }
 
 #beginning {
+    text-shadow: black 0.1em 0.1em 0.2em; 
+    position: relative;
+    height: 205px;
+    width: 100%;
+    background-image: url(../images/hp-images/background1.png);
     text-align: center;
-    padding: 50px 0;
-    background-color: var(--primary-color);
+    padding: 40px 50px 0;
     color: var(--secondary-color);
 }
 
-#beginning h1 {
+#background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+h1 {
     font-size: 2.5rem;
+    position: relative;
+    z-index: 1;
 }
 
 #beginning p {
     font-size: 1.25rem;
     margin-top: 10px;
+    position: relative;
+    z-index: 1;
 }
 
 #about {
-    padding: 50px 0;
+    text-shadow: black 0.1em 0.1em 0.2em; 
+    color: #EEEEEE;
+    padding: 50px;
+    font-family: "Noto Sans JP", sans-serif;
+    text-shadow: black 0.1em 0.1em 0.2em; 
+    font-size: 25px;
+    font-style: normal;
+    text-align: left;
+}
+#about h1 {
+    width: 14%;
+    margin-bottom: 15px;
 }
 
 #products {
-    padding: 50px 0;
+    padding: 50px;
     text-align: center;
 }
 
-#products h2 {
-    font-size: 2rem;
-    margin-bottom: 20px;
+#products h1{   
+    text-align: left;
+    width: 10%;
+    box-shadow: 5px 8px rgba(7, 7, 7, 0.1);
 }
 
 #product-container {
@@ -79,27 +111,39 @@ main {
     border: 1px solid var(--primary-color);
     border-radius: 10px;
     overflow: hidden;
-    transition: transform 0.3s ease;
-    width: 200px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 300px;
+    width: 220px;
+    margin: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    justify-content: space-between;
 }
 
 .product-item:hover {
     transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .product-item img {
     width: 100%;
-    height: auto;
+    height: 50%;
+    object-fit: cover;
+    display: block;
 }
 
 .product-item h3 {
-    padding: 10px;
-    font-size: 1.2rem;
+    padding: 15px;
+    font-size: 20px;
+    font-family: "Archivo Black", sans-serif;
     color: var(--primary-color);
+    text-align: center;
 }
 
 .product-item a {
     text-decoration: none;
     color: var(--accent-color);
+    display: block;
+    text-align: center;
+    padding: 10px 0;
 }

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:wght@500&display=swap');
 header {
     display: flex;
     justify-content: space-between;
@@ -37,6 +38,43 @@ header div a {
 }
 
 header div a:hover {
+    cursor: pointer;
     background-color: var(--accent-color);
     color: var(--secondary-color);
+}
+
+#authArea {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+#auth-username {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-right: 10px;
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    color: white;
+}
+
+#logout-button {
+    background-color: #ddd;
+    color: #333;
+    border: 1px solid #000;
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#logout-button:hover {
+    color: white;
+    background-color: transparent;
 }

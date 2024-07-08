@@ -1,15 +1,16 @@
 <link rel="stylesheet" href="../public/css/header.css">
+<script type="module" src="../public/js/login.js"></script>
 <header>
-    <img src="../public/images/hp-images/logoWhite_long.png" alt="">
+    <img type="module" src="../public/images/hp-images/logoWhite_long.png" alt="">
     <nav>
-        <ul>
+        <ul id="nav-list">
             <li><a href="#beginning">Inicio</a></li>
             <li><a href="#about">Sobre</a></li>
             <li><a href="#products">Produtos</a></li>
         </ul>
     </nav>
-    <div>
-        <a href="/register">Cadastro</a>
-        <a href="/login">Entrar</a>
+    <div id="authButtons">
+        <a id="registerButton" href="/register">Cadastro</a>
+        <a id="loginButton" href="/login">Entrar</a>
     </div>
 </header>

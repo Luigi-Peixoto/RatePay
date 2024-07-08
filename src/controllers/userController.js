@@ -22,13 +22,11 @@ const getUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   const { username } = req.body;
-  if (!username) {
-    return res.status(400).json({ message: 'Usuário é obrigatório' });
-  }
+ 
   try {
     const user = await User.findOne({ username: username });
     if (!user) {
-      return res.status(404).json({ message: 'Usuário não encontrado' });
+      return res.status(403).send('<script>alert("Usuário não encontrado!"); window.location.href = "/"; </script>');
     }
 
     if (user.role !== 'ADMIN' && user.role !== req.session.user.role) {
@@ -36,7 +34,7 @@ const deleteUser = async (req, res) => {
       return res.status(200).redirect('/');
     }
     
-    return res.status(403).json({ message: 'Você não tem permissão para deletar esse usuário' });
+    return res.status(403).send('<script>alert("Você não tem permissão para deletar esse usuário!"); window.location.href = "/"; </script>');
 
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -61,7 +59,7 @@ const createUser = async (req, res) => {
 
     await newUser.save();
 
-    req.session.user = { id: user.id, username: user.username , role: user.role};
+    req.session.user = { id: newUser.id, username: newUser.username, role: newUser.role };
 
     return res.redirect('/');
 
@@ -114,7 +112,7 @@ const createEmployee = async (req, res) => {
     });
 
     if (user) {
-      return res.status(400).json({ message: 'Email ou username já existente!' });
+      return res.status(400).send('<script>alert("Email ou username já existente!"); window.location.href = "/"; </script>');
     }
 
     const salt = await bcrypt.genSalt(12);

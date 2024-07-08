@@ -33,12 +33,12 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 footer img {
     height: 70px;
-    margin-left: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
 }
 
 footer p {
@@ -50,12 +50,17 @@ footer p {
 footer .contact-content {
     display: flex;
     justify-content: center;
-    gap: 30px;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
     flex-wrap: wrap;
 }
 
 footer .contact-content ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 footer .contact-content ul li {
@@ -68,10 +73,6 @@ footer .contact-content ul li a {
     font-weight: bold;
 }
 
-footer .contact-content  {
-    margin-top: 20px;
-}
-
 footer .contact-content a {
     color: var(--secondary-color);
     margin: 0 10px;
@@ -79,26 +80,11 @@ footer .contact-content a {
     font-size: 1.5rem;
 }
 
-.contact-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.contact-content > ul {
-    display: flex;
-}
-
 #social-contacts {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-}
-
-.contact-link {
-    text-decoration: none;
 }
 
 #social-contacts .contact-link {
@@ -121,4 +107,33 @@ footer .contact-content a {
 
 #linkedin {
     background-color: #4267b3;
+}
+
+@media (min-width: 768px) {
+    footer {
+        flex-direction: row;
+    }
+
+    footer .contact-content {
+        flex-direction: row;
+    }
+
+    footer .contact-content ul {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 767px) {
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    footer .contact-content {
+        flex-direction: column;
+    }
+
+    footer .contact-content ul {
+        flex-direction: column;
+    }
 }

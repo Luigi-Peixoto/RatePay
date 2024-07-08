@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -25,8 +26,9 @@
     --color-purple-100: #2161b5;
     --color-purple-200: #78add1;
 
-    --color-gradient: linear-gradient(90deg,#4D42F8, #6262f6, var(--color-purple-200));
+    --color-gradient: linear-gradient(90deg, #4D42F8, #6262f6, var(--color-purple-200));
 }
+
 body {
     width: 100%;
     background: var(--color-gradient);
@@ -34,9 +36,9 @@ body {
     box-sizing: border-box;    
     line-height: 1.6;
 }
+
 main {
     min-height: 50rem;
-    padding: 20px;
 }
 
 #product-container {
@@ -44,9 +46,11 @@ main {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     overflow: hidden;
-    width: 800px;
+    max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 #top-content {
@@ -131,9 +135,6 @@ main {
 }
 
 @media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
 
     #product-container {
         padding: 10px;
@@ -149,5 +150,10 @@ main {
 
     #bottom-content p {
         padding: 8px 16px;
+    }
+
+    #product-link {
+        font-size: 16px;
+        padding: 6px;
     }
 }

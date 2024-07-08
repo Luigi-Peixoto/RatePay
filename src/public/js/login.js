@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
                 .then(() => {
                     const menu = document.getElementById('menu-nav');
-                    menu.style.display = 'none'
+                    if(menu){
+                        menu.style.display = 'none' 
+                    }
                     authButtons.style.display = 'block';
                     authArea.style.display = 'none';
                 })
@@ -115,6 +117,8 @@ function fetchProducts() {
     const modal = document.getElementById('products-modal');
     modal.style.display = 'flex';
     const textArea = document.getElementById('product-modal-content');
+    textArea.innerHTML = '';    
+    textArea.innerHTML = '<span class="close">&times;</span> <h2>Produtos:</h2>'
     fetch('products/api', {
         method: 'GET'
     })
@@ -137,6 +141,8 @@ function fetchUsers() {
     const modal = document.getElementById('users-modal');
     modal.style.display = 'flex';
     const textArea = document.getElementById('users-modal-content');
+    textArea.innerHTML = '';
+    textArea.innerHTML = '<span class="close">&times;</span> <h2>Usuários:</h2>'
     fetch('/auth/users', {
         method: 'GET'
     })
@@ -173,7 +179,6 @@ function showDeleteUserModal() {
     const modal = document.getElementById('delete-user-modal');
     modal.style.display = 'flex';
 }
-
 
 function setupModals() {
     const productsModal = document.getElementById('products-modal');

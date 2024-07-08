@@ -33,6 +33,7 @@ header {
     align-items: center;
     padding: 20px;
     background-color: var(--header-color);
+    flex-wrap: wrap;
 }
 
 header img {
@@ -216,7 +217,6 @@ button:hover {
     background-color: #007bff;
 }
 
-
 @keyframes modalFadeIn {
     from {
         opacity: 0;
@@ -236,4 +236,74 @@ button:hover {
 
 .modal-content form {
     overflow-y: visible;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+
+    header img {
+        margin-bottom: 10px;
+    }
+
+    nav {
+        margin-right: 20px;
+        width: 100%;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    header nav ul li {
+        width: 100%;
+        text-align: center;
+    }
+
+    header nav ul li a {
+        display: block;
+        width: 100%;
+        padding: 10px 0;
+        border: 1px solid white;
+        border-radius: 5px;
+    }
+
+    header div a {
+        width: 100%;
+        text-align: center;
+    }
+    
+    #authButtons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 0px;
+        margin-right: 40px;
+    }
+
+    #auth-username {
+        font-size: 25px;
+        margin-top: 20px;
+        margin-right: 20px;
+        text-align: center;
+        width: 100%;
+    }
+
+    #logout-button {
+        padding: 4px 15px;
+        font-size: 20px;
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
 }

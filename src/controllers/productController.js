@@ -43,11 +43,18 @@ const createProduct = async (req, res) => {
 
 const deleteProduct = async (req, res) => {
   try {
-    const productId = req.body.productId;
-    await Product.findByIdAndDelete(productId);
-    return res.redirect('/')
+    const productId = req.body.id;
+
+    const productDeleted = await Product.findByIdAndDelete(productId);
+
+    if (!productDeleted) {
+      return res.status(403).send('<script>alert("Produto não encontrado!"); window.location.href = "/"; </script>');
+    }
+
+    return res.status(302).redirect('/');
   } catch (error) {
-    res.status(500).send('Erro ao deletar produto: ' + error.message);
+    console.error('Error deleting product:', error);
+    return res.status(500).send('Erro ao deletar produto: ' + error.message);
   }
 };
 

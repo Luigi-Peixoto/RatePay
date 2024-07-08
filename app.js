@@ -44,6 +44,6 @@ app.get('/register', (req, res) => {
     res.render('register');
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT ? Number(process.env.PORT) : PORT, () => {
     console.log("App Running");
 });

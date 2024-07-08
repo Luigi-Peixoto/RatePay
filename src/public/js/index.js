@@ -41,7 +41,7 @@ function createCard(id, name, image_url) {
     card.appendChild(p);
 
     card.addEventListener('click', () => {
-        window.location.href = `/product/${id}`;
+        window.location.href = `/products/${id}`;
     });
 
     return card;

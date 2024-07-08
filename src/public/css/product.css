@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Roboto&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:root {
+    --primary-color: #4D42F8;
+    --secondary-color: #ffffff;
+    --tertiary-color: #EEEEEE;
+    --accent-color: #000000; 
+    --header-color: #282c34;
+
+    --color-light-50: #f8fafc;
+
+    --color-dark-50: #797984;
+    --color-dark-100: #312d37;
+    --color-dark-900: #000;
+
+    --color-purple-50: #28389f;
+    --color-purple-100: #2161b5;
+    --color-purple-200: #78add1;
+
+    --color-gradient: linear-gradient(90deg,#4D42F8, #6262f6, var(--color-purple-200));
+}
+body {
+    width: 100%;
+    background: var(--color-gradient);
+    color: var(--accent-color);
+    box-sizing: border-box;    
+    line-height: 1.6;
+}
+main {
+    min-height: 50rem;
+    padding: 20px;
+}
+
+#product-container {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+#top-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#left-content,
+#right-content {
+    flex: 1 1 45%;
+    margin: 10px;
+}
+
+#left-content img {
+    object-fit: contain;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+#right-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#right-content h1 {
+    text-shadow: rgb(87, 86, 86) 0.1em 0.1em 0.2em; 
+    font-family: 'Archivo Black', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+#right-content p {
+    font-family: 'Roboto', sans-serif;
+    height: 50%;
+    padding: 20px;
+    color: #000;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+#bottom-content {
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    margin-top: 20px;
+}
+
+#product-link {
+    background-color: #4D42F8;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#product-link:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    #left-content,
+    #right-content {
+        flex: 1 1 100%;
+    }
+
+    #right-content h1 {
+        font-size: 1.5rem;
+    }
+
+    #right-content p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    #product-container {
+        padding: 10px;
+    }
+
+    #right-content h1 {
+        font-size: 1.2rem;
+    }
+
+    #right-content p {
+        font-size: 0.8rem;
+    }
+
+    #bottom-content p {
+        padding: 8px 16px;
+    }
+}

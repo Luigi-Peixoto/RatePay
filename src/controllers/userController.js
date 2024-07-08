@@ -47,7 +47,7 @@ const createUser = async (req, res) => {
     });
 
     if (user) {
-      return res.status(400).json({ message: 'Email ou username já existente!' });
+      return res.status(400).send('<script>alert("Email ou username já existente!"); window.location.href = "/register"; </script>');
     }
 
     const salt = await bcrypt.genSalt(12);
@@ -68,7 +68,7 @@ const login = async (req, res) => {
 
   try {
     if (!login || !password) {
-      return res.status(400).json({ message: 'Login e senha são obrigatórios!' });
+      return res.status(400).send('<script>alert("Login e senha são obrigatórios!"); window.location.href = "/login"; </script>');
     }
 
     const user = await User.findOne({
@@ -76,12 +76,12 @@ const login = async (req, res) => {
     });
 
     if (!user) {
-      return res.status(404).json({ message: 'Email ou username não encontrado!' });
+      return res.status(404).send('<script>alert("Email ou username não encontrado!"); window.location.href = "/login"; </script>');
     }
 
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(422).json({ message: 'Senha inválida!' });
+      return res.status(422).send('<script>alert("Senha inválida!"); window.location.href = "/login"; </script>');;
     }
 
     req.session.user = { id: user.id, username: user.username , role: user.role};

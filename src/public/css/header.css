@@ -1,4 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:root {
+    --primary-color: #4D42F8;
+    --secondary-color: #ffffff;
+    --tertiary-color: #EEEEEE;
+    --accent-color: #000000; 
+    --header-color: #282c34;
+
+    --color-light-50: #f8fafc;
+
+    --color-dark-50: #797984;
+    --color-dark-100: #312d37;
+    --color-dark-900: #000;
+
+    --color-purple-50: #28389f;
+    --color-purple-100: #2161b5;
+    --color-purple-200: #78add1;
+
+    --color-gradient: linear-gradient(90deg,#4D42F8, #6262f6, var(--color-purple-200));
+}
+
 header {
     display: flex;
     justify-content: space-between;

@@ -12,11 +12,17 @@ router.put('/update-product/:id', middleware.isEmployee,productController.update
 router.delete('/delete-product/:id',middleware.isEmployee, productController.deleteProduct);
 
 router.get('/',middleware.isAuthenticated, (req, res) => {
-    res.render('/login')
+    res.render('login');
 })
 
-router.get('/:id',middleware.isAuthenticated, (req, res) => {
-    res.render('/login')
+/*router.get('/:id',middleware.isAuthenticated, (req, res) => {
+    const id = req.params.id;
+    res.render('product', {id: id});
+})*/
+
+router.get('/:id', (req, res) => {
+    const id = req.params.id;
+    res.render('product', {id: id});
 })
 
 module.exports = router;

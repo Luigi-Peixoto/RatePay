@@ -15,3 +15,74 @@
     </div>
 </header>
 <div id="dropdown-menu" class="dropdown-menu"></div>
+<div id="products-modal" class="modal">
+    <div id="user-modal-content" class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Produtos:</h2>
+    </div>
+</div>
+<div id="users-modal" class="modal">
+    <div id="users-modal-content" class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Usuários:</h2>
+    </div>
+</div>
+<div id="create-product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Adicionar Produto</h2>
+        <form id="create-product-form" method="POST" action="/products/register-product" enctype="multipart/form-data">
+            <label for="productName">Nome do Produto:</label>
+            <input type="text" id="productName" name="name" required>
+            <label for="productDescription">Descrição do Produto:</label>
+            <textarea id="productDescription" name="description" required></textarea>
+            <label for="productLink">Link do Produto:</label>
+            <input type="text" id="productLink" name="link" required>
+            <label for="productImage">Imagem do Produto:</label>
+            <input type="file" id="productImage" name="file" required>
+            <button type="submit">Criar</button>
+        </form>
+    </div>
+</div>
+
+<div id="delete-product-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Deletar Produto</h2>
+        <form id="delete-product-form" action="/products/delete-product" method="POST">
+            <label for="productId">ID do Produto:</label>
+            <input type="text" id="productId" name="id" required>
+            <button type="submit">Deletar</button>
+        </form>
+    </div>
+</div>
+
+<div id="create-employee-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Adicionar Funcionário</h2>
+        <form id="create-employee-form" method="POST" action="/auth/emp">
+            <label for="userName">Nome Completo:</label>
+            <input type="text" id="userName" name="name" required>
+            <label for="username">Usuário:</label>
+            <textarea id="username" name="username" required></textarea>
+            <label for="userEmail">E-mail:</label>
+            <input type="text" id="userEmail" name="email" required>
+            <label for="userPassword">Senha:</label>
+            <input type="password" id="userPassword" name="password" required>
+            <button type="submit">Adicionar</button>
+        </form>
+    </div>
+</div>
+
+<div id="delete-user-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Remover Usuário</h2>
+        <form id="delete-user-form" action="auth/delete-user" method="POST">
+            <label for="deleteUsername">Usuário:</label>
+            <input type="text" id="deleteUsername" name="username" required>
+            <button type="submit">Deletar</button>
+        </form>
+    </div>
+</div>

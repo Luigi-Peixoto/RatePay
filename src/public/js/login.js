@@ -32,6 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     body: JSON.stringify({})
                 })
                 .then(() => {
+                    const menu = document.getElementById('menu-nav');
+                    menu.style.display = 'none'
                     authButtons.style.display = 'block';
                     authArea.style.display = 'none';
                 })
@@ -62,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch(error => {
         console.error('Erro ao verificar login:', error);
     });
+    setupModals();
 });
 
 function checkMenu(role) {
@@ -69,25 +72,29 @@ function checkMenu(role) {
     const dropdownMenu = document.getElementById('dropdown-menu');
 
     const options = role === "ADMIN" ? 
-        ["Ver Produtos", "Adicionar Produto", /*"Atualizar Produto"*/, "Deletar Produto"] :
-        ["Ver Produtos"];
+        ["Ver Produtos", "Adicionar Produto", "Deletar Produto","Ver Usuários","Remover Usuário", "Adicionar Funcionário"] :
+        ["Ver Produtos", "Adicionar Produto", "Deletar Produto","Ver Usuários","Remover Usuário"];
 
     options.forEach(optionText => {
         const option = document.createElement("a");
         option.textContent = optionText;
         option.style.cursor = "pointer";
 
-        /*option.addEventListener("click", () => {
+        option.addEventListener("click", () => {
             if (optionText === "Ver Produtos") {
                 fetchProducts();
             } else if (optionText === "Adicionar Produto") {
                 showCreateProductModal();
-            } else if (optionText === "Atualizar Produto") {
-                updateProduct();
             } else if (optionText === "Deletar Produto") {
                 showDeleteProductModal();
+            } else if (optionText === "Ver Usuários"){
+                fetchUsers();
+            }else if (optionText === "Remover Usuário"){
+                showDeleteUserModal();
+            }else if (optionText === "Adicionar Funcionário"){
+                showCreateEmployeeModal();
             }
-        });*/
+        });
 
         dropdownMenu.appendChild(option);
     });
@@ -101,5 +108,87 @@ function checkMenu(role) {
         if (!menu.contains(event.target) && !dropdownMenu.contains(event.target)) {
             dropdownMenu.style.display = "none";
         }
+    });
+}
+
+function fetchProducts() {
+    const modal = document.getElementById('products-modal');
+    modal.style.display = 'flex';
+    const textArea = document.getElementById('product-modal-content');
+    fetch('products/api', {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(item => {
+            const p = document.createElement('p');
+            p.innerHTML = `Nome: ${item.name} <br> Descrição: ${item.description} <br> Link: ${item.link} <br> Imagem URL: ${item.image_url} `;
+            textArea.appendChild(p);
+            const br = document.createElement('br')
+            textArea.appendChild(br);
+        });
+    })
+    .catch(error => {
+        console.error('Erro ao buscar produtos:', error);
+    });
+}
+
+function fetchUsers() {
+    const modal = document.getElementById('users-modal');
+    modal.style.display = 'flex';
+    const textArea = document.getElementById('users-modal-content');
+    fetch('/auth/users', {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(item => {
+            const p = document.createElement('p');
+            p.innerHTML = `Nome: ${item.name} <br> Usuário: ${item.username} <br> E-mail: ${item.email} <br> Cargo: ${item.role} `;
+            textArea.appendChild(p);
+            const br = document.createElement('br')
+            textArea.appendChild(br);
+        });
+    })
+    .catch(error => {
+        console.error('Erro ao buscar produtos:', error);
+    });
+}
+
+function showCreateProductModal() {
+    const modal = document.getElementById('create-product-modal');
+    modal.style.display = 'flex';
+}
+
+function showDeleteProductModal() {
+    const modal = document.getElementById('delete-product-modal');
+    modal.style.display = 'flex';
+}
+function showCreateEmployeeModal() {
+    const modal = document.getElementById('create-employee-modal');
+    modal.style.display = 'flex';
+}
+
+function showDeleteUserModal() {
+    const modal = document.getElementById('delete-user-modal');
+    modal.style.display = 'flex';
+}
+
+
+function setupModals() {
+    const productsModal = document.getElementById('products-modal');
+    const createProductModal = document.getElementById('create-product-modal');
+    const deleteProductModal = document.getElementById('delete-product-modal');
+    const createEmployeeModal = document.getElementById('create-employee-modal');
+    const deleteUserModal = document.getElementById('delete-user-modal');
+    const userModal = document.getElementById('users-modal');
+   
+    
+    [productsModal, createProductModal, deleteProductModal, createEmployeeModal, deleteUserModal, userModal].forEach(modal => {
+        modal.addEventListener('click', (event) => {
+            if (event.target.classList.contains('modal') || event.target.classList.contains('close')) {
+                modal.style.display = 'none';
+            }
+        });
     });
 }

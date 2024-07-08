@@ -21,17 +21,22 @@ const getUser = async (req, res) => {
 };
 
 const deleteUser = async (req, res) => {
+  const { username } = req.body;
+  if (!username) {
+    return res.status(400).json({ message: 'Usuário é obrigatório' });
+  }
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findOne({ username: username });
     if (!user) {
       return res.status(404).json({ message: 'Usuário não encontrado' });
     }
-    if(user.role === "ADMIN" || user.role === "EMPLOYEE"){
-      await User.deleteMany(user);
-      return res.status(200).json({ message: 'Usuário deletado com sucesso' });
-    }
 
-    return res.status(200).json({ message: 'Você não tem permissão para deletar esse usuário' });
+    if (user.role !== 'ADMIN' && user.role !== req.session.user.role) {
+      await User.deleteOne({ _id: user._id });
+      return res.status(200).redirect('/');
+    }
+    
+    return res.status(403).json({ message: 'Você não tem permissão para deletar esse usuário' });
 
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -54,10 +59,12 @@ const createUser = async (req, res) => {
     const passwordHash = await bcrypt.hash(password, salt);
     const newUser = new User({ name, username, email, password: passwordHash });
 
-    const userSaved = await newUser.save();
+    await newUser.save();
 
-    req.session.user = { id: userSaved.id, username: userSaved.username , role: userSaved.role};
+    req.session.user = { id: user.id, username: user.username , role: user.role};
+
     return res.redirect('/');
+
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -116,21 +123,7 @@ const createEmployee = async (req, res) => {
 
     const userSaved = await newUser.save();
 
-    req.session.user = { id: userSaved.id, username: userSaved.username , role: userSaved.role};
     return res.redirect('/');
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-};
-
-const deleteEmployee = async (req, res) => {
-  try {
-    const user = await User.findByIdandRemove(req.params.id);
-    if (!user) {
-      return res.status(404).json({ message: 'Usuário não encontrado' });
-    }
-    await User.deleteMany(user);
-    return res.status(200).json({ message: 'Usuário deletado com sucesso' });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -143,6 +136,5 @@ module.exports = {
   createUser,
   login,
   logout,
-  createEmployee,
-  deleteEmployee
+  createEmployee
 };

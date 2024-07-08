@@ -5,11 +5,9 @@ const middleware = require('../middleware/authenticateAcess');
 
 router.get('/users',middleware.allowed, userController.getUsers);
 router.get('/user/:id', middleware.allowed, userController.getUser);
-router.delete('/delete/:id', middleware.isEmployee, userController.deleteUser);
-
+router.post('/delete-user', middleware.isEmployee, userController.deleteUser);
 
 router.post('/emp', middleware.isAdmin, userController.createEmployee);
-router.delete('/emp/delete/:id', middleware.isAdmin, userController.deleteEmployee);
 
 router.post('/login', userController.login);
 router.post('/logout',userController.logout);

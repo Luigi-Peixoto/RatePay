@@ -110,23 +110,130 @@ header div a:hover {
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     margin-top: 10px;
     left: 50%;
     padding: 10px;
     z-index: 1000;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .dropdown-menu a {
     display: block;
-    padding: 10px;
-    color: black;
+    padding: 10px 20px;
+    color: #333;
     text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .dropdown-menu a:hover {
     background-color: var(--color-purple-200);
-    color: white;
+    color: #fff;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal > h2 {
+    margin-top: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="file"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #4D42F8;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #007bff;
+}
+
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#products-modal .modal-content,
+#users-modal .modal-content {
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+.modal-content form {
+    overflow-y: visible;
 }

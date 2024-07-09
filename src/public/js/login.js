@@ -119,12 +119,8 @@ function fetchProducts() {
     const textArea = document.getElementById('product-modal-content');
     textArea.innerHTML = '';    
     textArea.innerHTML = '<span class="close">&times;</span> <h2>Produtos:</h2>'
-    var path = window.location.pathname;
-    if (path.includes('/products')) {
-        path = window.location.origin + "/products/api";
-    }else{
-        path = '/products/api';
-    }
+    
+    const path = window.location.origin + "/products/api"
     fetch(path , {
         method: 'GET'
     })
@@ -149,7 +145,9 @@ function fetchUsers() {
     const textArea = document.getElementById('users-modal-content');
     textArea.innerHTML = '';
     textArea.innerHTML = '<span class="close">&times;</span> <h2>Usuários:</h2>'
-    fetch('/auth/users', {
+    
+    const path = window.location.origin + "/auth/users";
+    fetch(path, {
         method: 'GET'
     })
     .then(response => response.json())

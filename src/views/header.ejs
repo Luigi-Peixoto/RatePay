@@ -26,10 +26,10 @@
     </div>
 </div>
 <div id="create-product-modal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content"> 
         <span class="close">&times;</span>
         <h2>Adicionar Produto</h2>
-        <form id="create-product-form" method="POST" action="/products/register-product" enctype="multipart/form-data">
+        <form id="create-product-form" method="POST" enctype="multipart/form-data">
             <label for="productName">Nome do Produto:</label>
             <input type="text" id="productName" name="name" required>
             <label for="productDescription">Descrição do Produto:</label>
@@ -47,7 +47,7 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Deletar Produto</h2>
-        <form id="delete-product-form" action="/products/delete-product" method="POST">
+        <form id="delete-product-form"  method="POST">
             <label for="productId">ID do Produto:</label>
             <input type="text" id="productId" name="id" required>
             <button type="submit">Deletar</button>
@@ -59,7 +59,7 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Adicionar Funcionário</h2>
-        <form id="create-employee-form" method="POST" action="/auth/emp">
+        <form id="create-employee-form" method="POST">
             <label for="userName">Nome Completo:</label>
             <input type="text" id="userName" name="name" required>
             <label for="username">Usuário:</label>
@@ -77,10 +77,17 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Remover Usuário</h2>
-        <form id="delete-user-form" action="auth/delete-user" method="POST">
+        <form id="delete-user-form" method="POST">
             <label for="deleteUsername">Usuário:</label>
             <input type="text" id="deleteUsername" name="username" required>
             <button type="submit">Deletar</button>
         </form>
     </div>
 </div>
+<script>
+    const path = window.location.origin;
+    document.getElementById('create-product-form').action = `${path}/products/register-product`;
+    document.getElementById('delete-product-form').action = `${path}/products/delete-product`;
+    document.getElementById('create-employee-form').action = `${path}/auth/emp`;
+    document.getElementById('delete-user-form').action = `${path}/auth/delete-user`;
+</script>

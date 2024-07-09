@@ -128,7 +128,7 @@ h1 {
 .product-item img {
     width: 100%;
     height: 50%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
 }
 

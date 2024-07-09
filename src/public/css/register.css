@@ -142,14 +142,14 @@ h3 {
     text-align: center;
 }
 
-#register {
+#login {
     position: relative;
     font-weight: bold;
     color: black;
     text-decoration: none;
 }
 
-#register:before {
+#login:before {
     content: "";
     position: absolute;
     width: 100%;
@@ -162,7 +162,7 @@ h3 {
     transition: all 0.3s ease-in-out;
 }
 
-#register:hover:before {
+#login:hover:before {
     visibility: visible;
     transform: scaleX(1);
 }

@@ -119,7 +119,13 @@ function fetchProducts() {
     const textArea = document.getElementById('product-modal-content');
     textArea.innerHTML = '';    
     textArea.innerHTML = '<span class="close">&times;</span> <h2>Produtos:</h2>'
-    fetch('products/api', {
+    var path = window.location.pathname;
+    if (path.includes('/products')) {
+        path = window.location.origin + "/products/api";
+    }else{
+        path = '/products/api';
+    }
+    fetch(path , {
         method: 'GET'
     })
     .then(response => response.json())

@@ -12,7 +12,7 @@
 </head>
 <body>
     <main id="container">
-        <form id="login_form" action="/auth/register" method="POST" onsubmit="return validateForm()">
+        <form id="register_form" action="/auth/register" method="POST" onsubmit="return validateForm()">
             <div id="form_header">
                 <a href="/">
                     <img id="mode_icon" src="../public/images/hp-images/estrela.png"></img>
@@ -68,33 +68,32 @@
                 </div>
             </div>
 
-            <button type="submit" id="login_button">
+            <button type="submit" id="register_button">
                 Registro
             </button>
-            <h3>Já possui uma conta? <a id="register" href="/login">Entrar!</a></h2>
+            <h3>Já possui uma conta? <a id="login" href="/login">Entrar!</a></h2>
         </form>
     </main>
+    <script>
+        function validateForm() {
+            const name = document.getElementById('name').value;
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmedPassword = document.getElementById('confirmedPassword').value;
+
+            if (name === "" || username === "" || email === "" || password === "" || confirmedPassword === "") {
+                alert("Por favor, preencha todos os campos.");
+                return false;
+            }
+
+            if (password !== confirmedPassword) {
+                alert("As senhas não coincidem. Por favor, verifique e tente novamente.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
 </body>
 </html>
-<script>
-    function validateForm() {
-        const login = document.getElementById('login').value;
-        const username = document.getElementById('username').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-        const confirmedPassword = document.getElementById('confirmedPassword').value;
-
-    
-        if (login === "" || username === "" || email === "" || password === "" || confirmedPassword === "") {
-            alert("Por favor, preencha todos os campos.");
-            return false;
-        }
-
-        if(password != confirmedPassword){
-            alert("As senhas não coincidem. Por favor, verifique e tente novamente.");
-            return false;
-        }
-    
-        return true;
-    }
-</script>

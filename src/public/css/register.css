@@ -35,7 +35,7 @@ html, body {
     padding: 20px;
 }
 
-#login_form {
+#register_form {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -122,7 +122,7 @@ html, body {
     outline: none;
 }
 
-#login_button {
+#register_button {
     border: none;
     background: var(--color-gradient);
     padding: 10px;
@@ -133,7 +133,7 @@ html, body {
     cursor: pointer;
 }
 
-#login_button:hover {
+#register_button:hover {
     transform: scale(1.05);
 }
 

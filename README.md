@@ -1,12 +1,14 @@
 # RatePay
 
+Proposta de solução para um desafio de implementação de um sistema web com fluxo lógico, funcionalidade de login e persistência dos dados.
+
 ## Descrição
 
-Desafio é um sistema web que permite aos usuários se registrar, fazer login e realizar ações autenticadas. Este projeto foi desenvolvido com uma combinação de tecnologias modernas, incluindo JavaScript, HTML, CSS, Node.js e Express.js. Utiliza requisições AJAX para uma experiência de usuário mais dinâmica e responsiva.
+RatePay é um sistema web que permite aos usuários se registrar, fazer login e realizar ações autenticadas. Este projeto foi desenvolvido com uma combinação de tecnologias modernas, incluindo JavaScript, HTML, CSS, Node.js e Express.js. Utiliza requisições AJAX para uma experiência de usuário mais dinâmica e responsiva.
 
 ## Tecnologias Utilizadas
 
- ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black) ![HTML](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white) ![CSS](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white) ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=Node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/-Express.js-000000?style=flat-square&logo=Express&logoColor=white)
+ ![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=JavaScript&logoColor=black) ![HTML](https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white) ![CSS](https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=CSS3&logoColor=white) ![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=Node.js&logoColor=white) ![Express.js](https://img.shields.io/badge/-Express.js-000000?style=flat-square&logo=Express&logoColor=white) ![MongoDb](https://img.shields.io/badge/-MongoDb-339933?style=flat-square&logo=MongoDb&logoColor=white)
 
 
 
